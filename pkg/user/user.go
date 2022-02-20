@@ -25,9 +25,9 @@ var (
 )
 
 type User struct {
-	Email     string `json: "email"`
-	FirstName string `json: "lastname"`
-	LastName  string `json: "lastname"`
+	Email     string `json:"email"`
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
 }
 
 func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI) (*User, error) {
