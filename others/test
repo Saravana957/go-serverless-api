@@ -1,0 +1,36 @@
+curl --header "Content-Type: application/json" --request POST --data '{"email": "abc@xyz.com", "first name": "xyz", "lastname": "123"}' <url>
+
+curl -X GET <url>
+
+lambda tests
+
+{
+  "httpMethod": "GET"
+}
+
+
+{
+  "httpMethod": "POST",
+  "body": "{\"email\": \"abc@xyz.com\"}",
+  "headers": {
+	"Content-Type": "application/json"
+  }
+}
+
+Issue: Testing in lambda through this error. 
+{
+    "errorMessage": "fork/exec /var/task/main: exec format error",
+    "errorType": "PathError"
+}
+
+Fix:
+
+https://stackoverflow.com/questions/62919660/patherror-when-deploying-go-project-to-aws-lambda
+
+Used below command to build. 
+
+GOOS=linux go build main.go
+
+To zip
+
+zip main.zip main
